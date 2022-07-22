@@ -65,9 +65,6 @@ class Scene:
 
         self.sruToSrt(self.vertexes, n=normal, v=viewUp, u=projection, vrpT=vrpT)
 
-        for v in self.vertexes:
-            print(v.coordinatesXYZ())
-
         for e in self.edges:
             self.canvas.create_line(e.startVertex.coordinatesXY(), e.endVertex.coordinatesXY())                
             
