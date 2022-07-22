@@ -32,7 +32,7 @@ class GeometricTransformation:
         return Vertex(vertex.x, vertex.y, vertex.z)
 
     @staticmethod
-    def calculateNormalVector(VRP,focalPoint):    
+    def calculateNormalVector(VRP:Vertex,focalPoint:Vertex):
         normal = Vertex(
             VRP.x - focalPoint.x,
             VRP.y - focalPoint.y,
@@ -40,7 +40,7 @@ class GeometricTransformation:
         )   
         
         normalModule = math.sqrt((pow(normal.x, 2) + pow(normal.y, 2) + pow(normal.z, 2)))
-       
+        
         return Vertex(
             normal.x / normalModule,
             normal.y / normalModule,
