@@ -15,10 +15,10 @@ sphere = Sphere(200, 8, 8)
 #   print(vertex.coordinatesXYZ())
   # gt.translation(vertex, Vertex(400, 300, 1))
 
-VRP = Vertex(0, 0, 250)
-focalPoint = Vertex(0, 0, 245)
+VRP = Vertex(0, 0, 200)
+focalPoint = Vertex(0, 0, 300)
 viewUp = Vertex(0, 1, 0)
-dp = 295
+dp = focalPoint.z + gt.distanceTwoVertexes(VRP,focalPoint)
 
 # minWindow=Vertex(-400, -300, 1)
 # maxWindow=Vertex(400, 300, 1)
@@ -37,6 +37,6 @@ scene = Scene(minWindow,maxWindow,minView,maxView,VRP,focalPoint,viewUp,dp,canva
 
 scene.AddObject(sphere)
 
-scene.Draw()
+scene.DrawWireframe()
 
 window.mainloop()
