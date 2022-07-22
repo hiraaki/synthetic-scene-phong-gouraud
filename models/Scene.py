@@ -1,4 +1,3 @@
-from numpy import append
 from models.Face import Face
 from models.GeometricTransformation import GeometricTransformation as gt
 from models.Sphere import Sphere
@@ -55,8 +54,6 @@ class Scene:
             y = (((j3*r5) + (j4*p3*r9))*v.x) + (((j3*r6) + (j4*p3*r10))*v.y) + (((j3*r7) + (j4*p3*r11))*v.z) + ((j3*r8) + (j4*p3*r12) + (j4*p4))
             z = ((p1*r9)*v.x) + ((p1*r10)*v.y) + ((p1*r11)*v.z) + ((p1*r12) + p2)
             u = ((p3*r9)*v.x) + ((p3*r10)*v.y) + ((p3*r11)*v.z) + ((p3*r12) + p4)
-            if u == 0:
-                return
             v.x,v.y,v.z=x/u,y/u,z/u
             
 
@@ -65,9 +62,6 @@ class Scene:
         viewUp = gt.calculateViewUpVector(normal,self.viewUp)
         projection = gt.crossProduct(viewUp, normal)
         vrpT = Vertex(gt.dotProduct(self.vrp,normal), gt.dotProduct(self.vrp,viewUp), gt.dotProduct(self.vrp,projection))
-        
-        for v in self.vertexes:
-            print(v.coordinatesXYZ())
 
         self.sruToSrt(self.vertexes, n=normal, v=viewUp, u=projection, vrpT=vrpT)
 
