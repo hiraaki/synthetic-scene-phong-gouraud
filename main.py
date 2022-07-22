@@ -18,7 +18,7 @@ sphere = Sphere(200, 8, 8)
 VRP = Vertex(0, 0, 200)
 focalPoint = Vertex(0, 0, 300)
 viewUp = Vertex(0, 1, 0)
-dp = focalPoint.z + gt.distanceTwoVertexes(VRP,focalPoint)
+dp = focalPoint.z + gt.distanceTwoVertexes(VRP,focalPoint)/2
 
 # minWindow=Vertex(-400, -300, 1)
 # maxWindow=Vertex(400, 300, 1)
