@@ -57,7 +57,7 @@ class Scene:
             v.x,v.y,v.z=x/u,y/u,z/u
             
 
-    def Draw(self):
+    def DrawWireframe(self):
         normal = gt.calculateNormalVector(self.vrp,self.focalPoint)
         viewUp = gt.calculateViewUpVector(normal,self.viewUp)
         projection = gt.crossProduct(viewUp, normal)
