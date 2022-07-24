@@ -82,5 +82,17 @@ class GeometricTransformation:
         return (a.x*b.x)+(a.y*b.y)+(a.z*b.z)
     
     @staticmethod
-    def calculateVrpTranslation(vrp: Vertex):
-        return Vertex(-vrp.x, -vrp.y, -vrp.z)
+    def planeEquation(p1:Vertex, p2:Vertex, p3:Vertex):
+        dp3p2x = p3.x - p2.x
+        dp3p2y = p3.y - p2.y
+        dp3p2z = p3.z - p2.z
+        
+        dp1p2x = p1.x - p2.x
+        dp1p2y = p1.y - p2.y
+        dp1p2z = p1.z - p2.z
+
+        a = (dp3p2y * dp1p2z) - (dp1p2y * dp3p2z)
+        b = (dp3p2z * dp1p2x) - (dp1p2z * dp3p2x)
+        c = (dp3p2x * dp1p2y) - (dp1p2x * dp3p2y)
+        
+        return Vertex(a,b,c)

@@ -1,6 +1,6 @@
 from .Vertex import Vertex
 class Edge:
-  def __init__(self, startVertex, endVertex):
+  def __init__(self, startVertex:Vertex, endVertex:Vertex):
     self.startVertex = startVertex
     self.endVertex = endVertex
 
