@@ -1,5 +1,4 @@
 import math
-from re import X
 from tokenize import Double, String
 
 from .Vertex import Vertex
@@ -78,7 +77,7 @@ class GeometricTransformation:
         return math.sqrt(math.pow(a.x-b.x,2)+math.pow(a.y-b.y,2)+math.pow(a.z-b.z,2))
     
     @staticmethod
-    def dotProduct(a: Vertex, b: Vertex):
+    def dotProduct(a:Vertex, b:Vertex):
         return (a.x*b.x)+(a.y*b.y)+(a.z*b.z)
     
     @staticmethod
@@ -96,3 +95,6 @@ class GeometricTransformation:
         c = (dp3p2x * dp1p2y) - (dp1p2x * dp3p2y)
         
         return Vertex(a,b,c)
+    
+    def vector(a:Vertex, b:Vertex):
+        return Vertex(b.x-a.x, b.y-a.y, b.z-a.z)

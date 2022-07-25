@@ -9,7 +9,7 @@ window = Tk()
 window.title('Computação gráfica: modelagem de cenas')
 
 
-sphere = Sphere(150, 18, 18)
+sphere = Sphere(150, 10, 10, 2.15)
 
 for vertex in sphere.vertexes:  
   gt.rotation(vertex, 45, "x")
@@ -30,6 +30,13 @@ canvas.pack()
 scene = Scene(minWindow,maxWindow,minView,maxView,VRP,focalPoint,viewUp,dp,canvas)
 
 scene.AddObject(sphere)
+
+ka = 0.4
+kd = 0.7
+ks = 0.5
+lightSource = Vertex(400,400,400)
+lightIntensity = 150
+scene.add_ilumination(lightSource,lightIntensity,0,ka,kd,ks)
 
 # scene.DrawWireframe();
 scene.DrawWireframeWithOclusion()

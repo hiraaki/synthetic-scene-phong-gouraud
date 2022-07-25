@@ -2,6 +2,7 @@ from typing import List
 from models.Edge import Edge
 from models.Face import Face
 from models.GeometricTransformation import GeometricTransformation as gt
+from models.Ilumination import Ilumination
 from models.Sphere import Sphere
 from models.Vertex import Vertex
 
@@ -69,8 +70,7 @@ class Scene:
 
         for e in self.edges:
             self.canvas.create_line(e.startVertex.coordinatesXY(), e.endVertex.coordinatesXY())
-            
-    
+                
 
     def DrawWireframeWithOclusion(self):
         normal = gt.calculateNormalVector(self.vrp,self.focalPoint)   
@@ -81,10 +81,16 @@ class Scene:
         todraw:List[Face] = []
 
         for f in self.faces:
-            if (gt.dotProduct(f.normal1() ,normal) <= 0) and (gt.dotProduct(f.normal2() ,normal) <= 0):                
+            if (gt.dotProduct(f.normal() ,normal) <= 0):                
                 continue
             todraw.append(f)
 
         for draw in todraw:
             for e in draw.edges:
                 self.canvas.create_line(e.startVertex.coordinatesXY(), e.endVertex.coordinatesXY())
+
+
+    def add_ilumination(self, lightSource:Vertex, lightIntensity:float, ambient_light:float, ka:float, kd:float, ks:float):
+        self.lightSource = Ilumination(lightSource, lightIntensity, ambient_light, ka, kd, ks, self.vrp)
+        for f in self.faces:
+            f.central_ilumination(self.lightSource, self.vrp)

@@ -3,13 +3,14 @@ from .Edge import Edge
 from .Face import Face
 from .GeometricTransformation import GeometricTransformation as gt
 class Sphere:
-  def __init__(self, radius:float, meridians:int, parallels:int):    
+  def __init__(self, radius:float, meridians:int, parallels:int, material:float):    
     self.meridians = meridians
     self.parallels = parallels
     self.radius = radius
     self.faces:list[Face] = []
     self.edges:list[Edge] = []
     self.vertexes:list[Vertex] = []
+    self.material:float = material
 
     self.shapeSphere()
 
@@ -70,7 +71,7 @@ class Sphere:
       faceEdges.append(Edge(endMeridian[p+1], endMeridian[p]))
       faceEdges.append(Edge(endMeridian[p], startMeridian[p]))
 
-      self.faces.append(Face(faceEdges))
+      self.faces.append(Face(faceEdges,self.material))
       self.edges.extend(faceEdges)
 
   def topSide(self, meridianList:list[Vertex], top:Vertex):
@@ -84,7 +85,7 @@ class Sphere:
     faceEdges.append(Edge(start,end))
     faceEdges.append(Edge(end,top))
 
-    self.faces.append(Face(faceEdges))
+    self.faces.append(Face(faceEdges,self.material))
     self.edges.extend(faceEdges)
   
   def bottonSide(self, meridianList:list[list[Vertex]], botton:Vertex):
@@ -93,13 +94,12 @@ class Sphere:
     for p in range(size):
       self.bottonFace(meridianList[p+1][last],meridianList[p][last],botton)
   
-  def bottonFace(self, start:Vertex, end:Vertex, botton:Vertex):
-    # print(start.coordinatesXYZ(), end.coordinatesXYZ(), botton.coordinatesXYZ())
+  def bottonFace(self, start:Vertex, end:Vertex, botton:Vertex):    
     faceEdges:list[Edge] = []
     faceEdges.append(Edge(end,botton))
     faceEdges.append(Edge(botton,start))
     faceEdges.append(Edge(start,end))
     
-    self.faces.append(Face(faceEdges))
+    self.faces.append(Face(faceEdges,self.material))
     self.edges.extend(faceEdges)
   
