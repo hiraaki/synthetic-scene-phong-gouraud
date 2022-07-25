@@ -52,7 +52,7 @@ class Sphere:
 
     return vertexesArray
   
-  def rotateMeridian(self, vetexes:list[list[Vertex]]):
+  def rotateMeridian(self, vetexes:'list[list[Vertex]]'):
     meridians = []
     meridianAngle = 360 / self.meridians + 1
     for v in vetexes:
@@ -61,7 +61,7 @@ class Sphere:
       
     return meridians
   
-  def bodySide(self, startMeridian:list[Vertex], endMeridian:list[Vertex]):
+  def bodySide(self, startMeridian:'list[Vertex]', endMeridian:'list[Vertex]'):
     mSize = len(startMeridian) -1
 
     for p in range(mSize):     
@@ -74,7 +74,7 @@ class Sphere:
       self.faces.append(Face(faceEdges,self.material))
       self.edges.extend(faceEdges)
 
-  def topSide(self, meridianList:list[Vertex], top:Vertex):
+  def topSide(self, meridianList: 'list[Vertex]', top:Vertex):
     size = self.meridians -1
     for p in range(size):
       self.topFace(meridianList[p][0], meridianList[p+1][0], top)
@@ -88,7 +88,7 @@ class Sphere:
     self.faces.append(Face(faceEdges,self.material))
     self.edges.extend(faceEdges)
   
-  def bottonSide(self, meridianList:list[list[Vertex]], botton:Vertex):
+  def bottonSide(self, meridianList: 'list[list[Vertex]]', botton:Vertex):
     size = self.meridians -1
     last = self.parallels -1
     for p in range(size):

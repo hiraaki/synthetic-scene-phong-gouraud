@@ -1,4 +1,3 @@
-from numpy import product
 from .GeometricTransformation import GeometricTransformation as gt
 from models.Vertex import Vertex
 
