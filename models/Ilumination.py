@@ -39,4 +39,9 @@ class Ilumination:
         
         return self.lightIntensity*self.ks*specularReflection
     
-       
+    def total(self, normal:Vertex, vertex:Vertex):
+        light_vector = self.unitVector(vertex)
+        diffuse_light = self.diffuse(light_vector, normal)
+        specular_light = self.specular(light_vector,vertex, normal)
+        
+        return self.ambient_light+diffuse_light+specular_light

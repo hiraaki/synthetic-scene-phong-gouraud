@@ -41,10 +41,6 @@ class Face:
 
     self.center = Vertex((max.x+min.x)/2,(max.y+min.y)/2,(max.z+min.z)/2)
   
-  def central_ilumination(self, ilumination:Ilumination, vrp:Vertex):
-    normal = self.normal()
-    self.ambient_light = ilumination.ambient_light
-    self.light_vector = ilumination.unitVector(self.center)
-    self.diffuse_light = ilumination.diffuse(self.light_vector, normal)
-    self.specular_light = ilumination.specular(self.light_vector,self.center, normal)
+  def central_ilumination(self, ilumination:Ilumination):
+    self.ilumination = ilumination.total(self.normal(),self.center)
     

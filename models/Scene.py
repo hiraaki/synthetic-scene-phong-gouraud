@@ -93,4 +93,4 @@ class Scene:
     def add_ilumination(self, lightSource:Vertex, lightIntensity:float, ambient_light:float, ka:float, kd:float, ks:float):
         self.lightSource = Ilumination(lightSource, lightIntensity, ambient_light, ka, kd, ks, self.vrp)
         for f in self.faces:
-            f.central_ilumination(self.lightSource, self.vrp)
+            f.central_ilumination(self.lightSource)
