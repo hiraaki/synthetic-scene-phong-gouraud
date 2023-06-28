@@ -1,1 +1,1 @@
-# synthetic scene appling phong and gouraud, shading
+# synthetic scene appling phong and gouraud shading
